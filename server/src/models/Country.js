@@ -11,11 +11,11 @@ module.exports = (sequelize) => {
         len: [3]
       }
     },
-    id:{
+    /* id:{
       type:DataTypes.STRING,
       allowNull: false,
       primaryKey:true,
-      /* autoincrement:true */
+      autoincrement:true
     },
     imagenBandera:{
       type:DataTypes.STRING,
@@ -40,6 +40,6 @@ module.exports = (sequelize) => {
     poblacion:{
       type:DataTypes.STRING,
       allowNull:false
-    },
+    }, */
   });
 };
