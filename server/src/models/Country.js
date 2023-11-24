@@ -9,12 +9,12 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     id:{
-      type:DataTypes.STRING,
+      type:DataTypes.STRING(3),
       allowNull: false,
       primaryKey:true,
-      validate: {
+      /* validate: {
         len: [3]
-      }
+      } */
       /* autoincrement:true */
     },
     imagenBandera:{
@@ -27,7 +27,7 @@ module.exports = (sequelize) => {
     },
     capital:{
       type:DataTypes.STRING,
-      allowNull:false
+      allowNull:true
     },
     subRegion:{
       type:DataTypes.STRING,

@@ -10,13 +10,15 @@ const getAllCountries=async()=>{
                 nombre:data[i].name.official,
                 id:data[i].cca3,
                 imagenBandera:data[i].flags.png,
-                continente:data[i].continets,
+                continente:data[i].continents,
                 capital:data[i].capital,
-                subRegion:data[i].subRegion,
+                subRegion:data[i].subregion,
                 area:data[i].area,
                 poblacion:data[i].population
             })
         }
+        /* const newCountries= */await Country.bulkCreate(countriesFiltered);
+        /* return newCountries; */
         return countriesFiltered;
     } catch (error) {
         return ("No se pudieron cargar")
