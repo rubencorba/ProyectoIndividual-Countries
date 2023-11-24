@@ -1,11 +1,11 @@
 const {Country}= require('../db.js');
 let axios= require('axios');
 
-const getAllCountries=async()=>{
+const saveCountriesInDb=async()=>{
     try {
         const {data}=await axios.get(`http://localhost:5000/countries/`);
         const countriesFiltered=[];
-        for (let i = 0; i < data.length; i++) {
+        /* for (let i = 0; i < data.length; i++) {
             await countriesFiltered.push({
                 nombre:data[i].name.official,
                 id:data[i].cca3,
@@ -16,9 +16,22 @@ const getAllCountries=async()=>{
                 area:data[i].area,
                 poblacion:data[i].population
             })
-        }
-        /* const newCountries= */await Country.bulkCreate(countriesFiltered);
-        /* return newCountries; */
+        } */
+        data.map(({name,cca3,flags,continents,capital,subregion,area,population})=>{
+            capital?(countriesFiltered.push({
+                nombre:name.official,
+                id:cca3,
+                imagenBandera:flags.png,
+                continente:continents,
+                capital:capital,
+                subRegion:subregion,
+                area:area,
+                poblacion:population
+            })
+            ):(null)
+        })
+        await Country.bulkCreate(countriesFiltered);
+        
         return countriesFiltered;
     } catch (error) {
         return ("No se pudieron cargar")
@@ -44,4 +57,4 @@ const getCountryById= async (id)=>{
     }
 }
 
-module.exports={createCountry,getCountryById,getAllCountries};
+module.exports={createCountry,getCountryById,saveCountriesInDb};
