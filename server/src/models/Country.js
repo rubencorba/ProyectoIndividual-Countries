@@ -7,15 +7,15 @@ module.exports = (sequelize) => {
     nombre: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        len: [3]
-      }
     },
-    /* id:{
+    id:{
       type:DataTypes.STRING,
       allowNull: false,
       primaryKey:true,
-      autoincrement:true
+      validate: {
+        len: [3]
+      }
+      /* autoincrement:true */
     },
     imagenBandera:{
       type:DataTypes.STRING,
@@ -40,6 +40,6 @@ module.exports = (sequelize) => {
     poblacion:{
       type:DataTypes.STRING,
       allowNull:false
-    }, */
+    },
   });
 };
