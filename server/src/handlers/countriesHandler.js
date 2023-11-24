@@ -1,14 +1,22 @@
-const {CountryById}=require('../controllers/countryById.js')
+const {countryById}=require('../controllers/countryById.js')
 const {getAllCountries}=require('../controllers/getAllCountries.js')
+const {countryByName}=require('../controllers/countryByName.js')
 
 const getCountries=async (req,res)=>{
-
-    try {
+    const {nombre}=req.query;
+    if (nombre){
+        const response= await countryByName(nombre);
+        res.status(200).json(response);
+    }else{
+        const response=await getAllCountries();
+        res.status(200).json(response);
+    }
+    /* try {
         const response=await getAllCountries();
         res.status(200).json(response);
     } catch (error) {
         res.status(400).json({error:error.message});
-    }
+    } */
 }
 
 
@@ -16,24 +24,13 @@ const getCountryById=async (req,res)=>{
     const {id}=req.params;
 
     try {
-        const response=await CountryById(id);
+        const response=await countryById(id);
         res.status(200).json(response);
     } catch (error) {
         res.status(400).json({error:error.message});
     }
 }
 
-/* const getDetailCountry= async (req,res)=>{
-    const {id}=req.params;
-
-    try {
-        const response= await getCountryById(id);
-        res.status(200).json(response);
-    } catch (error) {
-        res.status(400).json({error:error.message});
-    }
-}
- */
 module.exports={
     getCountries,
     getCountryById

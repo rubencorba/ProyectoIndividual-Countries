@@ -7,6 +7,6 @@ const {getCountries,getCountryById}= require('../handlers/countriesHandler');
 
 countriesRouter.get('/',getCountries)
 countriesRouter.get('/:id',getCountryById)
-/* countriesRouter.get('/?',getCountryById) */
+
 
 module.exports= countriesRouter;

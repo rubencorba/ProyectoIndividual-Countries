@@ -6,7 +6,7 @@ const activitiesRouter=require('./activitiesRouter');
 
 const router = Router();
 
-router.use('/',countriesRouter)
+router.use('/countries',countriesRouter)
 router.use('/activity',activitiesRouter)
 
 
