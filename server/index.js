@@ -6,7 +6,7 @@ const PORT = 3001;
 
 
 
-conn.sync({ force: true }).then(() => {
+conn.sync({ force: false }).then(() => {
   saveCountriesInDb(); //Para guardar todos los países en mi base de datos
 server.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
