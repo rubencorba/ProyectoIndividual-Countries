@@ -1,6 +1,9 @@
-const {Country}= require('../db.js');
+const {Country,Activity}= require('../db.js');
 
-const countryById=async(id)=> await Country.findOne({where:{id:id}})
+const countryById=async(id)=> await Country.findOne({where:{id:id},include:[{model:Activity,
+    as:'Activities',
+attributes:["nombre"],
+through:{attributes:[]}}]})
 
 
 module.exports={countryById}
