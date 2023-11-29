@@ -1,15 +1,16 @@
 import './cardsStyles.css';
 import Card from '../card/cardComponent'
 
-function CardsComponent() {
-  
+function CardsComponent({allCountries}) {
+
+  const countriesList= allCountries;
 
   return (
     <div className='card-list'>
-      <Card/>
-      <Card/>
-      <Card/>
-      <Card/>
+      
+      {countriesList?.map((country)=>(
+        <Card country={country}/>
+      ))}
       
     </div>
   )

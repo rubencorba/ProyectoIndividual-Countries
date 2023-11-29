@@ -1,11 +1,14 @@
 import './cardStyles.css'
 
-function CardComponent() {
+function CardComponent({country}) {
   
+  const {nombre,population,imagenBandera}= country;
 
   return (
     <div className='card-container'>
-      <p>Soy una card</p>
+      <p>{nombre}</p>
+      <p>{population}</p>
+      <p>{imagenBandera}</p>
       
     </div>
   )
