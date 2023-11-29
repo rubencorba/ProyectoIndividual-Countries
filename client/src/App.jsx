@@ -5,7 +5,7 @@ import DetailComponent from './views/detail/detailComponent'
 import HomeComponent from './views/home/homeComponent'
 import LandingComponent from './views/landing/landingComponent'
 
-import './App.css'
+/* import './App.css' */
 
 function App() {
 
@@ -17,9 +17,6 @@ function App() {
         <Route path='/create' element={<CreateComponent/>}/>
       </Routes>
       
-      
-      
-      <LandingComponent/>
     </div>
   )
 }

@@ -6,7 +6,10 @@ function NavbarComponent() {
 
   return (
     <div>
-      <div>Soy el navbar</div>
+      <form className='search-box'>
+        <input placeholder='Ingrese ID o nombre' />
+        <button>Buscar</button>
+      </form>
       
     </div>
   )

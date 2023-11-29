@@ -3,7 +3,9 @@ const {Op}= require("sequelize");
 
 const countryByName=async(nombre)=> {
     const lowerName=nombre.toLowerCase();
-    return await Country.findAll({where:{nombre:{[Op.iLike]: `%${lowerName}%`}}})
+    let countriesFound=await Country.findAll({where:{nombre:{[Op.iLike]: `%${lowerName}%`}}})
+    if (countriesFound.length===0){countriesFound="No existen países con esa coincidencia"}
+    return countriesFound
 }
 
 

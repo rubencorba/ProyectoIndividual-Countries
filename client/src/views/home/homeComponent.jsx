@@ -7,10 +7,10 @@ function HomeComponent() {
   
 
   return (
-    <div>
-      <div>Funciona Home</div>
-      <CardsComponent/>
+    <div className="homeStyle">
+      <h2 className="homeTittle">Countries</h2>
       <NavbarComponent/>
+      <CardsComponent/>
       
     </div>
   )
