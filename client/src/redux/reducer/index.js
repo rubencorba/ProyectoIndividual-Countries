@@ -2,6 +2,7 @@ import { GET_ALL_COUNTRIES } from "../actions";
 
 const initialState={
     allCountries:[], // ??
+    allCountriesCopy: [],
     activities:[] //??
 };
 

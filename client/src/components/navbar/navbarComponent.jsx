@@ -1,14 +1,14 @@
 import './navbarStyles.css';
 
 
-function NavbarComponent() {
+function NavbarComponent(/* {handleChange,handleSubmit} */) {
   
 
   return (
-    <div>
-      <form className='search-box'>
-        <input placeholder='Ingrese ID o nombre' />
-        <button>Buscar</button>
+    <div className='search-box'>
+      <form /* onChange={handleChange} */>
+        <input placeholder='Ingrese ID o nombre' type='search'/>
+        <button type='submit' /* onClick={handleSubmit} */>Buscar</button>
       </form>
       
     </div>

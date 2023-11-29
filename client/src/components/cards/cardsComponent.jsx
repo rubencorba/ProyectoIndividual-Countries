@@ -11,7 +11,7 @@ function CardsComponent({allCountries}) {
       {countriesList?.map((country)=>(
         <Card country={country}/>
       ))}
-      
+      <div><Card/></div>
     </div>
   )
 }
