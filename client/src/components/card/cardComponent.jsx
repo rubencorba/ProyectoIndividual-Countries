@@ -1,16 +1,19 @@
 import './cardStyles.css'
+import { Link } from 'react-router-dom';
 
 function CardComponent({country}) {
   
-  const {nombre,population,imagenBandera}= country;
+  const {nombre,poblacion,imagenBandera,id}= country;
 
   return (
     <div className='card-container'>
+      <Link to={`/Home/${id}`} >
+
       <p>{nombre}</p>
-      <p>{population}</p>
+      <p>{poblacion}</p>
       <p>{imagenBandera}</p>
+      </Link>
       
-      <p>Soy una card</p>
       
     </div>
   )
