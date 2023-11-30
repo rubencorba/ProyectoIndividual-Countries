@@ -8,9 +8,9 @@ function CardsComponent({allCountries}) {
   return (
     <div className='card-list'>
       
-      {countriesList?.map((country)=>(
-        <Card country={country}/>
-      ))}
+        {countriesList?.map((country)=>(
+          <Card country={country}/>
+        ))}
     </div>
   )
 }
