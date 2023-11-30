@@ -7,7 +7,7 @@ function CardComponent({country}) {
 
   return (
     <div className='card-container'>
-      <Link to={`/Home/${id}`} >
+      <Link to={`/detail/${id}`} >
 
       <p>{nombre}</p>
       <p>{poblacion}</p>

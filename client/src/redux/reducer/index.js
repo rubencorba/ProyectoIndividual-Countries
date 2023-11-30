@@ -1,9 +1,10 @@
-import { GET_ALL_COUNTRIES, GET_COUNTRY_BY_NAME } from "../actions";
+import { GET_ALL_COUNTRIES, GET_COUNTRY_BY_NAME,GET_DETAIL_COUNTRY } from "../actions";
 
 const initialState={
     allCountries:[],
     allCountriesCopy: [],
-    activities:[]
+    activities:[],
+    detailCountry:{}
 };
 
 
@@ -13,6 +14,8 @@ export const reducer=(state=initialState,action)=>{
             return {...state,allCountries:action.payload}
         case GET_COUNTRY_BY_NAME:
             return {...state,allCountries:action.payload}
+        case GET_DETAIL_COUNTRY:
+            return {...state,detailCountry:action.payload}
         default:
             return {...state}
     }
