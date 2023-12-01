@@ -13,17 +13,30 @@ function CreateComponent() {
   });
 
   const [error,setError]=useState({
-    nombre:"",
+    nombre:'',
     dificultad:"",
     duracion:"",
     temporada:"",
     countryId:""
   });
 
+  const validate=(input)=>{
+    if (input.nombre.length<4){
+      console.log("menor que 4");
+      return
+    }
+    console.log("ahora si")
+    return
+  }
+
   const handleChange=(event)=>{
     setInput({
       ...input,
-      [event.target.nombre]:event.target.value
+      [event.target.name]:event.target.value
+    })
+    validate({
+      ...input,
+      [event.target.name]:event.target.value
     })
   }
 
@@ -35,7 +48,7 @@ function CreateComponent() {
           <label>Nombre</label>
           <input 
           placeholder='Nombre de la actividad' 
-          nombre='nombre' 
+          name='nombre' 
           onChange={handleChange}
           value={input.value}/>
         </div>
@@ -43,7 +56,7 @@ function CreateComponent() {
           <label>Dificultad</label>
           <input 
           placeholder='1-5' 
-          nombre='dificultad' 
+          name='dificultad' 
           onChange={handleChange} 
           value={input.value}/>
         </div>
@@ -51,7 +64,7 @@ function CreateComponent() {
           <label>Duracion</label>
           <input 
           placeholder='Duración en horas' 
-          nombre='duracion' 
+          name='duracion' 
           onChange={handleChange} 
           value={input.value}/>
         </div>
@@ -59,14 +72,14 @@ function CreateComponent() {
           <label>Temporada</label>
           <input 
           placeholder='Verano,Otoño,Invierno,Primavera' 
-          nombre='temporada' 
+          name='temporada' 
           onChange={handleChange} 
           value={input.value}/>
         </div>
         <div>
           <label>Pais</label>
           <input 
-          nombre='countryId' 
+          name='countryId' 
           onChange={handleChange} 
           value={input.value}/>
         </div>
