@@ -13,7 +13,7 @@ function CreateComponent() {
   });
 
   const [error,setError]=useState({
-    nombre:'',
+    nombre:'Campo obligatorio', //Para colocal un mensaje de error antes de escribir: nombre:'por favor completar este campo'
     dificultad:"",
     duracion:"",
     temporada:"",
@@ -21,12 +21,11 @@ function CreateComponent() {
   });
 
   const validate=(input)=>{
-    if (input.nombre.length<4){
-      console.log("menor que 4");
+    if (input.nombre.length<1){
+      setError({...error,nombre:"El nombre no puede estar vacío"})
       return
     }
-    console.log("ahora si")
-    return
+    setError({...error,nombre:''})
   }
 
   const handleChange=(event)=>{
@@ -51,6 +50,7 @@ function CreateComponent() {
           name='nombre' 
           onChange={handleChange}
           value={input.value}/>
+          <span>{error.nombre}</span>
         </div>
         <div>
           <label>Dificultad</label>
@@ -83,6 +83,7 @@ function CreateComponent() {
           onChange={handleChange} 
           value={input.value}/>
         </div>
+        {error.nombre? null : <button type='submit' >Crear</button>}
       </form>
     </div>
   )
