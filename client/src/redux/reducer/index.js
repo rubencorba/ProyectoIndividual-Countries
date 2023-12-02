@@ -1,4 +1,4 @@
-import { GET_ALL_COUNTRIES, GET_COUNTRY_BY_NAME,GET_DETAIL_COUNTRY } from "../actions";
+import { GET_ALL_COUNTRIES, GET_COUNTRY_BY_NAME,GET_DETAIL_COUNTRY,POST_NEW_ACTIVITY } from "../actions";
 
 const initialState={
     allCountries:[],
@@ -16,6 +16,9 @@ export const reducer=(state=initialState,action)=>{
             return {...state,allCountries:action.payload}
         case GET_DETAIL_COUNTRY:
             return {...state,detailCountry:action.payload}
+        case POST_NEW_ACTIVITY:
+            console.log(action.payload)
+            return {...state,activities:[...state.activities,action.payload]}
         default:
             return {...state}
     }
