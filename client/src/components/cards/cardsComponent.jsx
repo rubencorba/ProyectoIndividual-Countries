@@ -1,9 +1,9 @@
 import './cardsStyles.css';
 import Card from '../card/cardComponent'
 
-function CardsComponent({allCountries,prevHandler,nextHandler,pagina}) {
+function CardsComponent({countriesToShow,prevHandler,nextHandler,pagina}) {
 
-  const countriesList= allCountries;
+  const countriesList= countriesToShow;
 
   return (
     <div >
@@ -12,9 +12,11 @@ function CardsComponent({allCountries,prevHandler,nextHandler,pagina}) {
       <button onClick={nextHandler}>Siguiente</button>
       
       <div className='card-list'>
-        {countriesList?.map((country)=>(
-          <Card country={country}/>
-        ))}
+        {countriesList.length?(
+        countriesList?.map((country)=>(
+          <Card key={country.id} country={country}/>
+        ))
+        ):(<h5>Cargando..</h5>)}
 
       </div>
     </div>
