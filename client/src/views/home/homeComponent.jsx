@@ -28,12 +28,47 @@ function HomeComponent() {
   useEffect (()=>{
     dispatch(getAllCountries());
   },[dispatch])
+
+
+
+  
+
+  const [countriesToShow, setCountriesToShow]= useState([...allCountries].splice(0,10));
+
+  const [page,setPage]=useState(1)
+
+  const prevHandler=()=>{
+    const prevPage=page-1;
+
+    if(prevPage<1) return;
+
+    const firstCountry=prevPage*10;
+
+    setPage(prevPage);
+    setCountriesToShow([...allCountries].splice(firstCountry,10))
+  }
+
+  const nextHandler=()=>{
+    const totalCountries=allCountries.length;
+
+    const nextPage=page+1;
+
+    const firstCountry=nextPage*10;
+
+    if (firstCountry>totalCountries+10) return;
+    setPage(nextPage);
+    setCountriesToShow([...allCountries].splice(firstCountry,10))
+  }
  
   return (
     <div className="homeStyle">
       <h2 className="homeTittle">Countries</h2>
       <NavbarComponent handleChange={handleChange} handleSubmit={handleSubmit}/>
-      <CardsComponent allCountries={allCountries}/>
+      <CardsComponent 
+      allCountries={countriesToShow} 
+      prevHandler={prevHandler} 
+      nextHandler={nextHandler}
+      pagina={page}/>
       
     </div>
   )
