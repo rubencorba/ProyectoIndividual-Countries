@@ -53,22 +53,19 @@ export const getDetailCountry=(id)=>{
 }
 
 export const postNewActivity=(input)=>{
-    /* try {
+    input.dificultad = Number(input.dificultad);
+    input.duracion = Number(input.duracion);
+    console.log(input)
+    try {
         return async (dispatch)=>{
-            const {data}= await axios.get(`http://localhost:3001/countries/${id}`);
+            const {data}= await axios.post(`http://localhost:3001/activities/`,input);
+            console.log(data);
             return dispatch({
-                type:GET_DETAIL_COUNTRY,
-                payload:data
+                            type:POST_NEW_ACTIVITY,
+                            payload:input
             })
         }
     } catch (error) {
         console.log(error);
-    } */
-    return (dispatch)=>{
-        return dispatch({
-            type:POST_NEW_ACTIVITY,
-            payload:input
-        })
     }
-    
 }

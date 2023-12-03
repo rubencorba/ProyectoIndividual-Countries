@@ -17,7 +17,7 @@ export const reducer=(state=initialState,action)=>{
         case GET_DETAIL_COUNTRY:
             return {...state,detailCountry:action.payload}
         case POST_NEW_ACTIVITY:
-            console.log(action.payload)
+            
             return {...state,activities:[...state.activities,action.payload]}
         default:
             return {...state}

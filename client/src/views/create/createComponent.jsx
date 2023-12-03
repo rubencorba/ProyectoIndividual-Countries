@@ -11,7 +11,7 @@ function CreateComponent() {
   
   const [input,setInput]=useState({
     nombre:"",
-    dificultad:"",
+    dificultad:0,
     duracion:"",
     temporada:"",
     countryId:""
@@ -36,9 +36,9 @@ function CreateComponent() {
     }))
   }
 
-  const handleSubmit=(event)=>{
+  const handleSubmit=async(event)=>{
     event.preventDefault();
-    dispatch(postNewActivity(input))
+    await dispatch(postNewActivity(input));
   }
 
 
