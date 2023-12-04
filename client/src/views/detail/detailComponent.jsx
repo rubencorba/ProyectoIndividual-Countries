@@ -15,14 +15,13 @@ function DetailComponent() {
     dispatch(getDetailCountry(id))
   },[id])
 
-  console.log(detail.Activities)
 
   return (
     <div>
       {/* <div>{detail.nombre}</div>
       <img src={detail.imagenBandera} alt="dhdghgdz" /> */}
 
-
+      {detail.nombre?(
       <div /* className="detailStyle" */>
                     <div>
                     <img /* className="imgdetailStyle" */ src={detail.imagenBandera} alt={detail.nombre}/>
@@ -46,6 +45,9 @@ function DetailComponent() {
                 
                 
             </div>
+      ):(
+        <h1>Cargando Información...</h1>
+        )}
       
     </div>
   )

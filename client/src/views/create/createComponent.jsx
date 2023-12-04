@@ -2,12 +2,16 @@ import './createStyles.css'
 
 import { useEffect,useState } from 'react'
 import validateCreate from './validateCreate';
-import { postNewActivity } from '../../redux/actions';
-import { useDispatch } from "react-redux";
+import { getAllCountries, postNewActivity } from '../../redux/actions';
+import { useDispatch,useSelector } from "react-redux";
 
 function CreateComponent() {
 
   const dispatch= useDispatch();
+  const allCountries= useSelector((state)=>state.allCountries);
+  useEffect (()=>{
+    dispatch(getAllCountries());
+  },[dispatch])
   
   const [input,setInput]=useState({
     nombre:"",
@@ -34,6 +38,18 @@ function CreateComponent() {
       ...input,
       [event.target.name]:event.target.value
     }))
+  }
+
+  const countryChange=(event)=>{
+    let nombre=event.target.value;
+    
+    const country=allCountries.find((countr)=>countr.nombre==nombre);
+    
+    const idFound=country?.id
+    setInput({
+      ...input,
+      countryId:idFound
+    })
   }
 
   const handleSubmit=async(event)=>{
@@ -85,7 +101,7 @@ function CreateComponent() {
           <label>Pais</label>
           <input 
           name='countryId' 
-          onChange={handleChange} 
+          onChange={countryChange} 
           value={input.value}/>
           <span>{error.countryId}</span>
         </div>
