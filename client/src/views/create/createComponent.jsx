@@ -44,7 +44,9 @@ function CreateComponent() {
   const [selectedCountries, setSelectedCountries] = useState([]);
   const [existe, setExiste]=useState(false);
   const [countryToAdd, setCountryToAdd]=useState('')
+  const [countryIdToAdd, setCountryIdToAdd]=useState('')
   const [inputCountry,setInputCountry]=useState('')
+  const [selectedCountriesId, setSelectedCountriesId] = useState([]);
 
   const countryChange=(event)=>{
     setInputCountry(event.target.value)
@@ -58,12 +60,22 @@ function CreateComponent() {
     const country=allCountries.find((countr)=>countr.nombre===nombreInp); //Para buscar el país con ese nombre
     
     const idFound=country?.id // Guarda en idFound el id del país para luego setearlo
-    country?setExiste(true):null
+
+    if(country){
+      
+    setExiste(true)
     setCountryToAdd(country?.nombre)
-    setInput({
-      ...input,
-      countryId:[`${idFound}`]  
-    })
+    
+    
+    
+    setCountryIdToAdd(idFound)
+    
+    
+   
+    }
+    /* setCountryIdToAdd(country?.id)
+    console.log(country?.id) */
+    
   }
 
   
@@ -72,8 +84,19 @@ function CreateComponent() {
     setSelectedCountries([...selectedCountries,countryToAdd]);
     setCountryToAdd('');
     setExiste(false);
-    setInputCountry('')
+    setInputCountry('');
+    setSelectedCountriesId((prevSelectedCountriesId)=>[...prevSelectedCountriesId,countryIdToAdd]) //CB, para manejar asincronía
+    
   }
+
+  //Para evitar problemas de asincronía, pues los manejos de estados no se actualizaban inmediatamente
+  useEffect(() => {
+    console.log("Selected Countries Id:", selectedCountriesId);
+    setInput({
+      ...input,
+      countryId: selectedCountriesId,
+    });
+  }, [selectedCountriesId]);
 
   
   const handleSubmit=async(event)=>{
