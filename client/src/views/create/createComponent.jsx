@@ -43,27 +43,39 @@ function CreateComponent() {
   const [filteredCountries, setFilteredCountries] = useState([]);
   const [selectedCountries, setSelectedCountries] = useState([]);
   const [existe, setExiste]=useState(false);
+  const [countryToAdd, setCountryToAdd]=useState('')
+  const [inputCountry,setInputCountry]=useState('')
+
   const countryChange=(event)=>{
+    setInputCountry(event.target.value)
     let nombreInp=event.target.value;
 
     const filtered = allCountries.filter((countr) =>
       countr.nombre.toLowerCase().includes(nombreInp.toLowerCase())
     );
-    setFilteredCountries(filtered)
+    setFilteredCountries(filtered) //Para mostrar la lista de países con coincidencia de nombre
     
-    const country=allCountries.find((countr)=>countr.nombre==nombreInp); //Para buscar el país con ese nombre
+    const country=allCountries.find((countr)=>countr.nombre===nombreInp); //Para buscar el país con ese nombre
     
     const idFound=country?.id // Guarda en idFound el id del país para luego setearlo
     country?setExiste(true):null
+    setCountryToAdd(country?.nombre)
     setInput({
       ...input,
-      countryId:idFound
+      countryId:[`${idFound}`]  
     })
   }
-  const handleAgregar=()=>{
-    setSelectedCountries("Agregado")
+
+  
+  const handleAgregar=(event)=>{
+    event.preventDefault();
+    setSelectedCountries([...selectedCountries,countryToAdd]);
+    setCountryToAdd('');
+    setExiste(false);
+    setInputCountry('')
   }
 
+  
   const handleSubmit=async(event)=>{
     event.preventDefault();
     await dispatch(postNewActivity(input));
@@ -115,7 +127,7 @@ function CreateComponent() {
           <input 
           name='countryId' 
           onChange={countryChange} 
-          value={input.value}
+          value={inputCountry}
           
           list="countries"/>
           
@@ -127,11 +139,21 @@ function CreateComponent() {
               
             ))}
           </datalist>
+
           {existe?<button onClick={handleAgregar}>Agregar</button>:null}
           <ul>
-            <li>{selectedCountries}</li>
-            <button>X</button>
+            {selectedCountries.map((countr)=>(
+              <div key={countr}>
+
+                <li>
+                  {countr}
+                </li>
+                <button>X</button>
+              </div>
+    
+            ))}
           </ul>
+
           <span>{error.countryId}</span>
         </div>
         {error.nombre? null : <button type='submit' >Crear</button>}
