@@ -40,12 +40,19 @@ function CreateComponent() {
     }))
   }
 
+  const [filteredCountries, setFilteredCountries] = useState([]);
   const countryChange=(event)=>{
-    let nombre=event.target.value;
+    let nombreInp=event.target.value;
+
+    const filtered = allCountries.filter((countr) =>
+      countr.nombre.toLowerCase().includes(nombreInp.toLowerCase())
+    );
+    setFilteredCountries(filtered)
     
-    const country=allCountries.find((countr)=>countr.nombre==nombre);
+    const country=allCountries.find((countr)=>countr.nombre==nombreInp);
     
     const idFound=country?.id
+
     setInput({
       ...input,
       countryId:idFound
@@ -99,10 +106,23 @@ function CreateComponent() {
         </div>
         <div>
           <label>Pais</label>
+          
           <input 
           name='countryId' 
           onChange={countryChange} 
-          value={input.value}/>
+          value={input.value}
+          
+          list="countries"/>
+          
+          <datalist name="" id="countries">
+          
+            {filteredCountries.map((country, id) => (
+              
+                <option key={id}>{country.nombre}</option>
+              
+            ))}
+          </datalist>
+          
           <span>{error.countryId}</span>
         </div>
         {error.nombre? null : <button type='submit' >Crear</button>}
