@@ -41,6 +41,8 @@ function CreateComponent() {
   }
 
   const [filteredCountries, setFilteredCountries] = useState([]);
+  const [selectedCountries, setSelectedCountries] = useState([]);
+  const [existe, setExiste]=useState(false);
   const countryChange=(event)=>{
     let nombreInp=event.target.value;
 
@@ -49,14 +51,17 @@ function CreateComponent() {
     );
     setFilteredCountries(filtered)
     
-    const country=allCountries.find((countr)=>countr.nombre==nombreInp);
+    const country=allCountries.find((countr)=>countr.nombre==nombreInp); //Para buscar el país con ese nombre
     
-    const idFound=country?.id
-
+    const idFound=country?.id // Guarda en idFound el id del país para luego setearlo
+    country?setExiste(true):null
     setInput({
       ...input,
       countryId:idFound
     })
+  }
+  const handleAgregar=()=>{
+    setSelectedCountries("Agregado")
   }
 
   const handleSubmit=async(event)=>{
@@ -122,7 +127,11 @@ function CreateComponent() {
               
             ))}
           </datalist>
-          
+          {existe?<button onClick={handleAgregar}>Agregar</button>:null}
+          <ul>
+            <li>{selectedCountries}</li>
+            <button>X</button>
+          </ul>
           <span>{error.countryId}</span>
         </div>
         {error.nombre? null : <button type='submit' >Crear</button>}
