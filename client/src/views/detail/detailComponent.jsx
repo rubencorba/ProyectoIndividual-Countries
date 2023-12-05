@@ -22,11 +22,11 @@ function DetailComponent() {
       <NavbarComponent/>
 
       {detail.nombre?(
-      <div /* className="detailStyle" */>
+      <div className="detail-container">
                     <div>
-                    <img /* className="imgdetailStyle" */ src={detail.imagenBandera} alt={detail.nombre}/>
+                    <img className="imgdetailStyle" src={detail.imagenBandera} alt={detail.nombre}/>
                     </div>
-                    <div /* className="detdetStyle" */>
+                    <div className="detail-data">
                     <h1>Name: {detail.nombre}</h1>
                     <h1>ID: {detail.id}</h1>
                     <h1>Continente: {detail.continente}</h1>

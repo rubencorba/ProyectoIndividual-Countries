@@ -4,13 +4,13 @@ import CreateComponent from './views/create/createComponent'
 import DetailComponent from './views/detail/detailComponent'
 import HomeComponent from './views/home/homeComponent'
 import LandingComponent from './views/landing/landingComponent'
+import ActivitiesComponent from "./views/activities/activitiesComponent";
 
 /* import './App.css' */
 
 function App() {
 
-  const navigate = useNavigate();
-  /* const [access, setAccess] = useState(false); */
+const navigate = useNavigate();
 
 const login= async (userData)=> {
 
@@ -21,16 +21,9 @@ const login= async (userData)=> {
     }else{
       throw Error("Usuario o contraseña incorrectos")
     }
-    /* const { access } = data;
-    setAccess(access);
-    access && navigate('/home'); */
+  
    
 }
-
-/* useEffect(() => {
-  !access && navigate('/');
-}, [access]); */
-
 
   return (
     <div>
@@ -39,6 +32,7 @@ const login= async (userData)=> {
         <Route exact path='/home' element={<HomeComponent/>}/>
         <Route path='/detail/:id' element={<DetailComponent/>}/>
         <Route path='/create' element={<CreateComponent/>}/>
+        <Route path='/activities' element={<ActivitiesComponent/>}/>
       </Routes>
       
     </div>

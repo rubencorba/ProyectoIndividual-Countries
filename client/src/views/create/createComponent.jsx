@@ -4,6 +4,7 @@ import { useEffect,useState } from 'react'
 import validateCreate from './validateCreate';
 import { getAllCountries, postNewActivity } from '../../redux/actions';
 import { useDispatch,useSelector } from "react-redux";
+import NavbarComponent from '../../components/navbar/navbarComponent';
 
 function CreateComponent() {
 
@@ -90,13 +91,11 @@ function CreateComponent() {
     
     
     setSelectedCountriesId(selectedCountriesId.filter((countr)=>countr!==country.id))
-    
-    console.log("quitar: ",event.target.value)
   }
 
   //Para evitar problemas de asincronía, pues los manejos de estados no se actualizaban inmediatamente
   useEffect(() => {
-    console.log("Selected Countries Id:", selectedCountriesId);
+    /* console.log("Selected Countries Id:", selectedCountriesId); */
     setInput({
       ...input,
       countryId: selectedCountriesId,
@@ -112,7 +111,8 @@ function CreateComponent() {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <NavbarComponent/>
+      <form onSubmit={handleSubmit} className='formStyles'>
         <div>
           <label>Nombre</label>
           <input 
@@ -171,7 +171,7 @@ function CreateComponent() {
           {existe?<button onClick={handleAgregar}>Agregar</button>:null}
           <ul>
             {selectedCountries.map((countr)=>(
-              <div key={countr}>
+              <div key={countr} className="country-item">
 
                 <li>
                   {countr}

@@ -11,14 +11,14 @@ function NavbarComponent({handleChange,handleSubmit}) {
                 <button>Home</button>
         </Link>
         <Link  to='/Activities'>
-                <button>Activities</button>
+                <button>Actividades</button>
         </Link>
         <h2 className="homeTittle">Countries</h2>
       <form className='NavForm' onChange={handleChange}>
-        <input  className='inputNavForm' placeholder='Ingrese ID o nombre' type='search'/>
+        <input  className='inputNavForm' placeholder='Ingrese nombre' type='search'/>
         <button type='submit' onClick={handleSubmit}>Buscar</button>
         <Link  to='/'>
-                <button>LogOut</button>
+                <button>Salir</button>
         </Link>
       </form>
       
