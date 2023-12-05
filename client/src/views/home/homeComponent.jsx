@@ -70,11 +70,13 @@ function HomeComponent() {
   
 
   const handleOrder=(event)=>{
-    
-    dispatch(orderCards(event.target.value))
+    dispatch(orderCards(event.target.value));
+    setCountriesToShow([...allCountries].splice(0, 10)); //Para solucionar problema de asincronía y forzar el renderizado actual
+    setPage(1);
   }
   const handleFilter=(event)=>{
     dispatch(filterCards(event.target.value))
+    setPage(1);
   }
   return (
     <div className="homeStyle">
@@ -84,14 +86,14 @@ function HomeComponent() {
 
       <div /* className="orderStyle" */ >
                   <select /* className="selectStyle" */ onChange={handleOrder}>
-                    {/* <option value="" disabled selected >Ordenar</option> */}
+                    <option value="" disabled selected >Ordenar</option>
                     
                      <option value="Alfabeticamente">Alfabeticamente</option>
-                     <option value="Area">Mayor Área</option>
-                     <option value="Poblacion">Mayor Población</option>
+                     <option value="Mayor area">Mayor Área</option>
+                     <option value="Mayor poblacion">Mayor Población</option>
                   </select>
                   <select /* className="selectStyle" */ onChange={handleFilter}>
-                    {/* <option value="" disabled selected>Continente</option> */}
+                    <option value="" disabled selected>Continente</option>
                      <option value="South America">South América</option>
                      <option value="North America">North América</option>
                      <option value="Asia">Asia</option>

@@ -20,12 +20,52 @@ export const reducer=(state=initialState,action)=>{
             return {...state,activities:[...state.activities,action.payload]}
         case FILTER:
             if (action.payload==="North America"){
+                state.allCountries=state.allCountriesCopy
+                const FilteredCountries= state.allCountries.filter((country)=>country.continente=="{\"North America\"}")
+                return {...state,allCountries: FilteredCountries} 
+            }
+            if (action.payload==="South America"){
+                state.allCountries=state.allCountriesCopy
+                const FilteredCountries= state.allCountries.filter((country)=>country.continente=="{\"South America\"}")
+                return {...state,allCountries: FilteredCountries} 
+            }
+            if (action.payload==="Asia"){
+                state.allCountries=state.allCountriesCopy
+                const FilteredCountries= state.allCountries.filter((country)=>country.continente=="{Asia}")
+                return {...state,allCountries: FilteredCountries} 
+            }
+            if (action.payload==="Europe"){
+                state.allCountries=state.allCountriesCopy
+                const FilteredCountries= state.allCountries.filter((country)=>country.continente=="{Europe}")
+                return {...state,allCountries: FilteredCountries} 
+            }
+            if (action.payload==="Africa"){
+                state.allCountries=state.allCountriesCopy
+                const FilteredCountries= state.allCountries.filter((country)=>country.continente=="{Africa}")
+                return {...state,allCountries: FilteredCountries} 
+            }
+            if (action.payload==="Oceania"){
+                state.allCountries=state.allCountriesCopy
+                const FilteredCountries= state.allCountries.filter((country)=>country.continente=="{Oceania}")
+                return {...state,allCountries: FilteredCountries} 
+            }
+            if (action.payload==="Antarctica"){
+                state.allCountries=state.allCountriesCopy
+                const FilteredCountries= state.allCountries.filter((country)=>country.continente=="{Antarctica}")
+                return {...state,allCountries: FilteredCountries} 
+            }
+        case ORDER:
+            if (action.payload==="Alfabeticamente"){
+                
+            }
+            if (action.payload==="Mayor area"){
+                const orderedCountries=state.allCountries.sort((a, b)=> {if(a.area<b.area) return 1; else return -1})
                 console.log(state.allCountries)
-                console.log(action.payload)
-
-                const NAcountries= state.allCountries.filter((country)=>country.continente=="{\"North America\"}")
-                console.log(NAcountries)
-                return {...state,allCountries: NAcountries} 
+                console.log(orderedCountries)
+                return {...state,allCountries:orderedCountries}
+            }
+            if (action.payload==="Mayor poblacion"){
+                
             }
         default:
             return {...state}
