@@ -4,8 +4,9 @@ export const GET_ALL_COUNTRIES="GET_ALL_COUNTRIES"
 export const GET_COUNTRY_BY_NAME="GET_COUNTRY_BY_NAME"
 export const GET_DETAIL_COUNTRY="GET_DETAIL_COUNTRY"
 export const POST_NEW_ACTIVITY="POST_NEW_ACTIVITY"
+export const FILTER="FILTER"
+export const ORDER="ORDER"
 
-import { useSelector } from 'react-redux';
 
 
 export const getAllCountries=()=>{
@@ -72,4 +73,11 @@ export const postNewActivity=(input)=>{
     } catch (error) {
         console.log(error);
     }
+}
+
+export const filterCards=(continente)=>{
+    return {type:FILTER, payload:continente}
+}
+export const orderCards=(orden)=>{
+    return {type:ORDER, payload:orden}
 }

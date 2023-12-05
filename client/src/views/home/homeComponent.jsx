@@ -3,7 +3,7 @@ import './homeStyles.css'
 import { useEffect,useState } from 'react'
 import {useDispatch,useSelector} from "react-redux"
 
-import {getAllCountries, getCountriesByName} from '../../redux/actions/index'
+import {getAllCountries, getCountriesByName, orderCards,filterCards} from '../../redux/actions/index'
 
 import NavbarComponent from '../../components/navbar/navbarComponent'
 import CardsComponent from '../../components/cards/cardsComponent'
@@ -37,9 +37,9 @@ function HomeComponent() {
   const [countriesToShow, setCountriesToShow]= useState([]);
 
   useEffect(() => {
-    if (allCountries.length) {
+    /* if (allCountries.length) { */
       setCountriesToShow([...allCountries].splice(0, 10));
-    }
+    /* } */
   }, [allCountries]);
   
   
@@ -71,10 +71,10 @@ function HomeComponent() {
 
   const handleOrder=(event)=>{
     
-    /* dispatch(OrderCards(event.target.value)) */
+    dispatch(orderCards(event.target.value))
   }
   const handleFilter=(event)=>{
-    /* dispatch(FilterCards(event.target.value)) */
+    dispatch(filterCards(event.target.value))
   }
   return (
     <div className="homeStyle">
@@ -82,17 +82,23 @@ function HomeComponent() {
       <NavbarComponent handleChange={handleChange} handleSubmit={handleSubmit}/>
 
 
-      <div className="orderStyle" >
-                  <select className="selectStyle" onChange={handleOrder}>
-                     <option value="Ascendente">Ascendente</option>
-                     <option value="Descendente">Descendente</option>
+      <div /* className="orderStyle" */ >
+                  <select /* className="selectStyle" */ onChange={handleOrder}>
+                    {/* <option value="" disabled selected >Ordenar</option> */}
+                    
+                     <option value="Alfabeticamente">Alfabeticamente</option>
+                     <option value="Area">Mayor Área</option>
+                     <option value="Poblacion">Mayor Población</option>
                   </select>
-                  <select className="selectStyle" onChange={handleFilter}>
-                     <option value="All">All</option>
-                     <option value="Male">Male</option>
-                     <option value="Female">Female</option>
-                     <option value="Genderless">Genderless</option>
-                     <option value="unknown">unknown</option>
+                  <select /* className="selectStyle" */ onChange={handleFilter}>
+                    {/* <option value="" disabled selected>Continente</option> */}
+                     <option value="South America">South América</option>
+                     <option value="North America">North América</option>
+                     <option value="Asia">Asia</option>
+                     <option value="Africa">África</option>
+                     <option value="Europe">Europe</option>
+                     <option value="Antarctica">Antarctica</option>
+                     <option value="Oceania">Oceanía</option>
                   </select>
       </div>
       <CardsComponent countriesToShow={countriesToShow} 

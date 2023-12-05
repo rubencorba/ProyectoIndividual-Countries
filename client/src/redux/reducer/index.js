@@ -1,4 +1,4 @@
-import { GET_ALL_COUNTRIES, GET_COUNTRY_BY_NAME,GET_DETAIL_COUNTRY,POST_NEW_ACTIVITY } from "../actions";
+import { GET_ALL_COUNTRIES, GET_COUNTRY_BY_NAME,GET_DETAIL_COUNTRY,POST_NEW_ACTIVITY,FILTER,ORDER } from "../actions";
 
 const initialState={
     allCountries:[],
@@ -18,6 +18,15 @@ export const reducer=(state=initialState,action)=>{
             return {...state,detailCountry:action.payload}
         case POST_NEW_ACTIVITY:
             return {...state,activities:[...state.activities,action.payload]}
+        case FILTER:
+            if (action.payload==="North America"){
+                console.log(state.allCountries)
+                console.log(action.payload)
+
+                const NAcountries= state.allCountries.filter((country)=>country.continente=="{\"North America\"}")
+                console.log(NAcountries)
+                return {...state,allCountries: NAcountries} 
+            }
         default:
             return {...state}
     }
