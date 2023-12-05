@@ -29,19 +29,22 @@ const handleSubmit=(e)=>{
 }
 
   return (
-    <div /* className="formStyle" */>
-            {/* <div>
-                <img src={tittlef} alt="Bienvenido!!" />
-            </div> */}
-            <form /* className="formformStyle" */ onSubmit={handleSubmit}>
+    <div className="formStyle">
+            <h1>Countries</h1>
+            <form className="formformStyle" onSubmit={handleSubmit}>
+            <div className="inputContainer">
             <label >Email: </label>
             <input placeholder='example@gmail.com' className="input1" type="text" value={userData.email} name='email' onChange={handleChange}/>
-            {userData.email !== ''? <>{errors.email}</> : ''} {/* Para que me muestre X estando vacío usar errors no userData */}
-            <br />
+            <span className="validationIcon">{userData.email !== ''? <>{errors.email}</> : ''}</span> {/* Para que me muestre X estando vacío usar errors no userData */}
+            </div>
+            {/* <br /> */}
+            <div className="inputContainer">
             <label >Password: </label>
             <input placeholder='*******' type="password" className="input1" value={userData.password} name='password' onChange={handleChange}/>
-            {userData.password !== ''? <>{errors.password}</> : ''}
-            <br />
+            <span className="validationIcon">{userData.password !== ''? <>{errors.password}</> : ''}</span>
+            </div>
+            {/* <br /> */}
+
             <button type="submit" /* onClick={handleSubmit} */>Submit</button>
 
         </form>
