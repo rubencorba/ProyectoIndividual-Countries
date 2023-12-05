@@ -40,13 +40,13 @@ function CreateComponent() {
     }))
   }
 
-  const [filteredCountries, setFilteredCountries] = useState([]);
-  const [selectedCountries, setSelectedCountries] = useState([]);
-  const [existe, setExiste]=useState(false);
-  const [countryToAdd, setCountryToAdd]=useState('')
-  const [countryIdToAdd, setCountryIdToAdd]=useState('')
-  const [inputCountry,setInputCountry]=useState('')
-  const [selectedCountriesId, setSelectedCountriesId] = useState([]);
+  const [filteredCountries, setFilteredCountries] = useState([]); //Para la coincidencia de países
+  const [selectedCountries, setSelectedCountries] = useState([]); //Para mostrar nombre de países agregados
+  const [existe, setExiste]=useState(false);                      //Para saber si renderizar o no botón Agregar
+  const [countryToAdd, setCountryToAdd]=useState('')              //Para agregar nuevo nombre país 
+  const [countryIdToAdd, setCountryIdToAdd]=useState('')          //Para agregar nuevo id país (y así enviar por input)
+  const [inputCountry,setInputCountry]=useState('')               //Para limpiar el input luego de agregar
+  const [selectedCountriesId, setSelectedCountriesId] = useState([]); //Almacena los IDs para setear al input
 
   const countryChange=(event)=>{
     setInputCountry(event.target.value)
@@ -66,15 +66,8 @@ function CreateComponent() {
     setExiste(true)
     setCountryToAdd(country?.nombre)
     
-    
-    
     setCountryIdToAdd(idFound)
-    
-    
-   
     }
-    /* setCountryIdToAdd(country?.id)
-    console.log(country?.id) */
     
   }
 
@@ -87,6 +80,18 @@ function CreateComponent() {
     setInputCountry('');
     setSelectedCountriesId((prevSelectedCountriesId)=>[...prevSelectedCountriesId,countryIdToAdd]) //CB, para manejar asincronía
     
+  }
+
+  const handleQuitar=(event)=>{
+    event.preventDefault();
+    setSelectedCountries(selectedCountries.filter((countr)=>countr!==event.target.value));
+    
+    const country=allCountries.find((countr)=>countr.nombre===event.target.value);
+    
+    
+    setSelectedCountriesId(selectedCountriesId.filter((countr)=>countr!==country.id))
+    
+    console.log("quitar: ",event.target.value)
   }
 
   //Para evitar problemas de asincronía, pues los manejos de estados no se actualizaban inmediatamente
@@ -171,7 +176,7 @@ function CreateComponent() {
                 <li>
                   {countr}
                 </li>
-                <button>X</button>
+                <button value={countr} onClick={handleQuitar}>X</button>
               </div>
     
             ))}
