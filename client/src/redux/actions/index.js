@@ -58,16 +58,6 @@ export const postNewActivity=(input)=>{
     input.dificultad = Number(input.dificultad);
     input.duracion = Number(input.duracion);
 
-    /* const allCountries= useSelector((state)=>state.allCountries); */
-    /* const {payload}=getAllCountries();
-    const allCountries=payload; */
-
-    /* const {response}= await axios.get(`http://localhost:3001/countries/?nombre=${input.countryId}`);
-
-    console.log(response[0].id) */
-
-    /* let country = allCountries.find((country)=>country.nombre===input.countryId) */
-    /* input.countryId = response[0].id; */
     try {
         return async (dispatch)=>{
 

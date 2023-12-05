@@ -7,7 +7,7 @@ import {getAllCountries, getCountriesByName} from '../../redux/actions/index'
 
 import NavbarComponent from '../../components/navbar/navbarComponent'
 import CardsComponent from '../../components/cards/cardsComponent'
-import { all } from 'axios'
+
 
 function HomeComponent() {
   
@@ -67,11 +67,34 @@ function HomeComponent() {
     setPage(nextPage);
     setCountriesToShow([...allCountries].splice(firstCountry,10))
   }
-  /* console.log(allCountries) */
+  
+
+  const handleOrder=(event)=>{
+    
+    /* dispatch(OrderCards(event.target.value)) */
+  }
+  const handleFilter=(event)=>{
+    /* dispatch(FilterCards(event.target.value)) */
+  }
   return (
     <div className="homeStyle">
       <h2 className="homeTittle">Countries</h2>
       <NavbarComponent handleChange={handleChange} handleSubmit={handleSubmit}/>
+
+
+      <div className="orderStyle" >
+                  <select className="selectStyle" onChange={handleOrder}>
+                     <option value="Ascendente">Ascendente</option>
+                     <option value="Descendente">Descendente</option>
+                  </select>
+                  <select className="selectStyle" onChange={handleFilter}>
+                     <option value="All">All</option>
+                     <option value="Male">Male</option>
+                     <option value="Female">Female</option>
+                     <option value="Genderless">Genderless</option>
+                     <option value="unknown">unknown</option>
+                  </select>
+      </div>
       <CardsComponent countriesToShow={countriesToShow} 
       prevHandler={prevHandler} 
       nextHandler={nextHandler}
