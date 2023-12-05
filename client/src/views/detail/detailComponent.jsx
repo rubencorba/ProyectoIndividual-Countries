@@ -3,6 +3,7 @@ import {getDetailCountry} from '../../redux/actions/index'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from "react-router-dom";
+import NavbarComponent from '../../components/navbar/navbarComponent'
 
 function DetailComponent() {
 
@@ -18,8 +19,7 @@ function DetailComponent() {
 
   return (
     <div>
-      {/* <div>{detail.nombre}</div>
-      <img src={detail.imagenBandera} alt="dhdghgdz" /> */}
+      <NavbarComponent/>
 
       {detail.nombre?(
       <div /* className="detailStyle" */>

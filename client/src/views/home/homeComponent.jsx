@@ -80,7 +80,7 @@ function HomeComponent() {
   }
   return (
     <div className="homeStyle">
-      <h2 className="homeTittle">Countries</h2>
+      
       <NavbarComponent handleChange={handleChange} handleSubmit={handleSubmit}/>
 
 
