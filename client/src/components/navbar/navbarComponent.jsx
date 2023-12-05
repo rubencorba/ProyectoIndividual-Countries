@@ -14,8 +14,8 @@ function NavbarComponent({handleChange,handleSubmit}) {
                 <button>Activities</button>
         </Link>
         <h2 className="homeTittle">Countries</h2>
-      <form onChange={handleChange}>
-        <input placeholder='Ingrese ID o nombre' type='search'/>
+      <form className='NavForm' onChange={handleChange}>
+        <input  className='inputNavForm' placeholder='Ingrese ID o nombre' type='search'/>
         <button type='submit' onClick={handleSubmit}>Buscar</button>
         <Link  to='/'>
                 <button>LogOut</button>

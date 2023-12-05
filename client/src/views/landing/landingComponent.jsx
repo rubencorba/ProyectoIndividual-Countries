@@ -30,7 +30,7 @@ const handleSubmit=(e)=>{
 
   return (
     <div className="formStyle">
-            <h1>Countries</h1>
+            <h1 className="TittleStyle">Countries</h1>
             <form className="formformStyle" onSubmit={handleSubmit}>
             <div className="inputContainer">
             <label >Email: </label>

@@ -7,7 +7,7 @@ function CardsComponent({countriesToShow,prevHandler,nextHandler,pagina}) {
 
   return (
     <div >
-      <h4>Página: {pagina}</h4>
+      <h4 className='paginaStyle'>Página: {pagina}</h4>
       <button onClick={prevHandler}>Anterior</button>
       <button onClick={nextHandler}>Siguiente</button>
       
