@@ -29,12 +29,14 @@ export const getCountriesByName=(nombre)=>{
     try {
         return async (dispatch)=>{
             const {data}= await axios.get(`http://localhost:3001/countries/?nombre=${nombre}`);
-            return dispatch({
+            if(typeof data==="string")window.alert(data);
+            else return dispatch({
                 type:GET_COUNTRY_BY_NAME,
                 payload:data
             })
         }
     } catch (error) {
+        
         console.log(error);
     }
     
