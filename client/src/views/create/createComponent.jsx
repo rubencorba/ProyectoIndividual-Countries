@@ -23,7 +23,7 @@ function CreateComponent() {
   });
 
   const [error,setError]=useState({
-    nombre:'Campo obligatorio', 
+    nombre:'.', 
     dificultad:"",
     duracion:"",
     temporada:"",
@@ -129,7 +129,7 @@ function CreateComponent() {
           name='dificultad' 
           onChange={handleChange} 
           value={input.value}/>
-          <span>{error.dificultad}</span>
+          {input.dificultad /* !== '' */?<span>{error.dificultad}</span> :null}
         </div>
         <div>
           <label>Duracion</label>
@@ -138,7 +138,7 @@ function CreateComponent() {
           name='duracion' 
           onChange={handleChange} 
           value={input.value}/>
-          <span>{error.duracion}</span>
+          {input.duracion?<span>{error.duracion}</span>:null}
         </div>
         <div>
           <label>Temporada</label>
@@ -147,7 +147,7 @@ function CreateComponent() {
           name='temporada' 
           onChange={handleChange} 
           value={input.value}/>
-          <span>{error.temporada}</span>
+          {input.temporada?<span>{error.temporada}</span>:null}
         </div>
         <div>
           <label>Pais</label>
@@ -159,7 +159,7 @@ function CreateComponent() {
           
           list="countries"/>
           
-          <datalist name="" id="countries">
+          <datalist /* className='dataListStyle' */ name="" id="countries">
           
             {filteredCountries.map((country, id) => (
               
@@ -184,7 +184,7 @@ function CreateComponent() {
 
           <span>{error.countryId}</span>
         </div>
-        {error.nombre? null : <button type='submit' >Crear</button>}
+        {error.nombre||error.dificultad||error.duracion||error.temporada||!selectedCountries.length? null : <button type='submit' >Crear</button>}
       </form>
     </div>
   )

@@ -59,20 +59,21 @@ export const postNewActivity=(input)=>{
     input.dificultad = Number(input.dificultad);
     input.duracion = Number(input.duracion);
 
+    return async (dispatch)=>{
     try {
-        return async (dispatch)=>{
-
-            
             const {data}= await axios.post(`http://localhost:3001/activities/`,input);
-            console.log(data);
+            /* console.log(data); */
+            window.alert('¡Actividad creada con éxito!');
             return dispatch({
                             type:POST_NEW_ACTIVITY,
                             payload:data
             })
-        }
+        
     } catch (error) {
-        console.log(error);
+        window.alert('¡Actividad ya existente!');
+        throw new Error(error);
     }
+}
 }
 
 export const filterCards=(continente)=>{
