@@ -10,12 +10,9 @@ import ActivitiesComponent from "./views/activities/activitiesComponent";
 
 function App() {
 
-const navigate = useNavigate();
-
-const login= async (userData)=> {
-
+    const navigate = useNavigate();
+    const login= async (userData)=> {
     const { email, password } = userData;
-
     if (email==="rubencorba@gmail.com" && password==="123asd"){
       navigate('/home')
     }else{

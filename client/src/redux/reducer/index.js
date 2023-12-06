@@ -1,4 +1,4 @@
-import { GET_ALL_COUNTRIES, GET_COUNTRY_BY_NAME,GET_DETAIL_COUNTRY,POST_NEW_ACTIVITY,FILTER,ORDER } from "../actions";
+import { GET_ALL_COUNTRIES, GET_COUNTRY_BY_NAME,GET_DETAIL_COUNTRY,POST_NEW_ACTIVITY,FILTER,ORDER, FILTER_ACT } from "../actions";
 
 const initialState={
     allCountries:[],
@@ -11,7 +11,9 @@ const initialState={
 export const reducer=(state=initialState,action)=>{
     switch (action.type){
         case GET_ALL_COUNTRIES:
+            console.log(action.payload)
             return {...state,allCountries:action.payload,allCountriesCopy:action.payload}
+            
         case GET_COUNTRY_BY_NAME:
             return {...state,allCountries:action.payload}
         case GET_DETAIL_COUNTRY:
@@ -42,6 +44,14 @@ export const reducer=(state=initialState,action)=>{
                 const orderedCountries=state.allCountries.sort((a, b)=> {if(Number(a.poblacion)<Number(b.poblacion)) return 1; else return -1})
                 return {...state,allCountries:orderedCountries}
             }
+        case FILTER_ACT:
+            
+            state.allCountries=state.allCountriesCopy
+            const countrAct=state.allCountries.filter((country)=>{
+                const filteredCountryByAct=country.Activities.find((activity)=>activity.nombre==action.payload);return filteredCountryByAct})
+            console.log(countrAct)
+            return {...state,allCountries:countrAct}
+
         default:
             return {...state}
     }

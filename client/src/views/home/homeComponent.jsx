@@ -3,7 +3,7 @@ import './homeStyles.css'
 import { useEffect,useState } from 'react'
 import {useDispatch,useSelector} from "react-redux"
 
-import {getAllCountries, getCountriesByName, orderCards,filterCards} from '../../redux/actions/index'
+import {getAllCountries, getCountriesByName, orderCards,filterCards,filterByActivity} from '../../redux/actions/index'
 
 import NavbarComponent from '../../components/navbar/navbarComponent'
 import CardsComponent from '../../components/cards/cardsComponent'
@@ -78,6 +78,14 @@ function HomeComponent() {
     dispatch(filterCards(event.target.value))
     setPage(1);
   }
+  
+  const activities= useSelector((state)=>state.activities);
+  
+  const handleFilterByAct=(event)=>{
+    dispatch(filterByActivity(event.target.value));
+    setCountriesToShow([...allCountries].splice(0, 10)); //Para solucionar problema de asincronía y forzar el renderizado actual
+    setPage(1);
+  }
   return (
     <div className="homeStyle">
       
@@ -102,6 +110,13 @@ function HomeComponent() {
                      <option value="{Europe}">Europe</option>
                      <option value="{Antarctica}">Antarctica</option>
                      <option value="{Oceania}">Oceanía</option>
+                  </select>
+                  <select onChange={handleFilterByAct}>
+                    {activities?.map((act)=>{
+
+                      return(
+                      <option value={act.nombre}>{act.nombre}</option>
+                    )})}
                   </select>
       </div>
       <CardsComponent countriesToShow={countriesToShow} 

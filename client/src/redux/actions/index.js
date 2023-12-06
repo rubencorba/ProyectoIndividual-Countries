@@ -6,6 +6,7 @@ export const GET_DETAIL_COUNTRY="GET_DETAIL_COUNTRY"
 export const POST_NEW_ACTIVITY="POST_NEW_ACTIVITY"
 export const FILTER="FILTER"
 export const ORDER="ORDER"
+export const FILTER_ACT="FILTER_ACT"
 
 
 
@@ -83,4 +84,7 @@ export const filterCards=(continente)=>{
 }
 export const orderCards=(orden)=>{
     return {type:ORDER, payload:orden}
+}
+export const filterByActivity=(actividad)=>{
+    return {type:FILTER_ACT, payload:actividad}
 }

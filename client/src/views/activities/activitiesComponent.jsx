@@ -29,17 +29,3 @@ function ActivitiesComponent() {
 
 export default ActivitiesComponent
 
-{/* <div >
-      <h4 className='paginaStyle'>Página: {pagina}</h4>
-      <button onClick={prevHandler}>Anterior</button>
-      <button onClick={nextHandler}>Siguiente</button>
-      
-      <div className='card-list'>
-        {countriesList.length?(
-        countriesList?.map((country)=>(
-          <Card key={country.id} country={country}/>
-        ))
-        ):(<h5>Cargando..</h5>)}
-
-      </div>
-    </div> */}

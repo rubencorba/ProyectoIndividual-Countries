@@ -26,7 +26,7 @@ const validateCreate=(input)=>{
     if (input.temporada===''){ error.temporada="La temporada no es correcta"}
 
 
-    /* if (input.countryId===''){ error.countryId="Campo obligatorio"} */
+    
     
 
 

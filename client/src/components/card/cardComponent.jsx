@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function CardComponent({country}) {
   
-  const {id,nombre,area,imagenBandera,capital,continente}= country;
+  const {id,nombre,area,imagenBandera,capital,continente,activities}= country;
 
   return (
 
@@ -20,6 +20,7 @@ function CardComponent({country}) {
           <p>Capital: {capital}</p>
           <p>Continente: {continente}</p>
           <p>Area: {area}</p>
+          <p>Actividades: {activities}</p>
          </div>
         </div>
       </Link>
