@@ -17,8 +17,8 @@ function ActivitiesComponent() {
     </Link>
     <div className='Actcard-list'>
     {activities.length?(
-      activities?.map((act)=>(
-        <CardActivityComponent key={act.nombre} activity={act}/>
+      activities?.map((activity)=>(
+        <CardActivityComponent key={activity.nombre} activity={activity}/>
       ))
     ):(<h3>Aun no hay actividades creadas</h3>)
     }
