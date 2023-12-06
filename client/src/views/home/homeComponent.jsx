@@ -84,23 +84,24 @@ function HomeComponent() {
       <NavbarComponent handleChange={handleChange} handleSubmit={handleSubmit}/>
 
 
-      <div /* className="orderStyle" */ >
-                  <select /* className="selectStyle" */ onChange={handleOrder}>
+      <div>
+                  <select onChange={handleOrder}>
                     <option value="" disabled selected >Ordenar</option>
                     
                      <option value="Alfabeticamente">Alfabeticamente</option>
                      <option value="Mayor area">Mayor Área</option>
                      <option value="Mayor poblacion">Mayor Población</option>
                   </select>
-                  <select /* className="selectStyle" */ onChange={handleFilter}>
-                    <option value="" disabled selected>Continente</option>
-                     <option value="South America">South América</option>
-                     <option value="North America">North América</option>
-                     <option value="Asia">Asia</option>
-                     <option value="Africa">África</option>
-                     <option value="Europe">Europe</option>
-                     <option value="Antarctica">Antarctica</option>
-                     <option value="Oceania">Oceanía</option>
+                  <select onChange={handleFilter}>
+                    <option value="" disabled selected >Continente</option>
+                     <option value="Todos">Todos</option>
+                     <option value="America">América</option>
+                     {/* <option value='{\"North America\"}'>North América</option> */}
+                     <option value="{Asia}">Asia</option>
+                     <option value="{Africa}">África</option>
+                     <option value="{Europe}">Europe</option>
+                     <option value="{Antarctica}">Antarctica</option>
+                     <option value="{Oceania}">Oceanía</option>
                   </select>
       </div>
       <CardsComponent countriesToShow={countriesToShow} 
