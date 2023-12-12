@@ -23,4 +23,5 @@ function CardsComponent({countriesToShow,prevHandler,nextHandler,pagina}) {
   )
 }
 
+
 export default CardsComponent
