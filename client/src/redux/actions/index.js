@@ -26,6 +26,8 @@ export const getAllCountries=()=>{
     
 }
 
+
+
 export const getCountriesByName=(nombre)=>{
     try {
         return async (dispatch)=>{
@@ -43,6 +45,8 @@ export const getCountriesByName=(nombre)=>{
     
 }
 
+
+
 export const getDetailCountry=(id)=>{
     try {
         return async (dispatch)=>{
@@ -58,12 +62,14 @@ export const getDetailCountry=(id)=>{
     
 }
 
+
+
 export const postNewActivity=(input)=>{
     input.dificultad = Number(input.dificultad);
     input.duracion = Number(input.duracion);
 
     return async (dispatch)=>{
-    try {
+        try {
             const {data}= await axios.post(`http://localhost:3001/activities/`,input);
             /* console.log(data); */
             window.alert('¡Actividad creada con éxito!');
@@ -72,19 +78,23 @@ export const postNewActivity=(input)=>{
                             payload:data
             })
         
-    } catch (error) {
+        } catch (error) {
         window.alert('¡Actividad ya existente!');
         throw new Error(error);
+        }
     }
-}
 }
 
 export const filterCards=(continente)=>{
     return {type:FILTER, payload:continente}
 }
+
+
 export const orderCards=(orden)=>{
     return {type:ORDER, payload:orden}
 }
+
+
 export const filterByActivity=(actividad)=>{
     return {type:FILTER_ACT, payload:actividad}
 }
