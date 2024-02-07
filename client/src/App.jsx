@@ -12,15 +12,13 @@ function App() {
 
     const navigate = useNavigate();
     const login= async (userData)=> {
-    const { email, password } = userData;
-    if (email==="rubencorba@gmail.com" && password==="123asd"){
-      navigate('/home')
-    }else{
-      throw Error("Usuario o contraseña incorrectos")
+      const { email, password } = userData;
+      if (email==="rubencorba@gmail.com" && password==="123asd"){
+        navigate('/home')
+      }else{
+        throw Error("Usuario o contraseña incorrectos")
+      }
     }
-  
-   
-}
 
   return (
     <div>
