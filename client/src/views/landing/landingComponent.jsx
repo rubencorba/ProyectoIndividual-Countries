@@ -44,7 +44,6 @@ const handleSubmit=(e)=>{
             <span className="validationIcon">{userData.password !== ''? <>{errors.password}</> : ''}</span>
             </div>
             
-
             <button type="submit" /* onClick={handleSubmit} */>Submit</button>
 
         </form>
