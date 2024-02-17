@@ -26,14 +26,12 @@ function HomeComponent() {
     dispatch(getCountriesByName(searchString))
   }
   
-  
-  
+   
   useEffect (()=>{
     dispatch(getAllCountries());
   },[dispatch])
 
-  
-  
+   
   const [countriesToShow, setCountriesToShow]= useState([]);
 
   useEffect(() => {
