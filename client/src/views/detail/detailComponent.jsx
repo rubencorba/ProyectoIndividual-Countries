@@ -40,10 +40,7 @@ function DetailComponent() {
                         <h3>Temporada: {act.temporada}</h3>
                       </div>
                     )}
-                    </div>
-
-                
-                
+                    </div>             
             </div>
       ):(
         <h1>Cargando Información...</h1>
