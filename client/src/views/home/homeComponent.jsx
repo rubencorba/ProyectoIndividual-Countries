@@ -104,7 +104,6 @@ function HomeComponent() {
                     <option value="" disabled selected >Continente</option>
                      <option value="Todos">Todos</option>
                      <option value="America">América</option>
-                     {/* <option value='{\"North America\"}'>North América</option> */}
                      <option value="{Asia}">Asia</option>
                      <option value="{Africa}">África</option>
                      <option value="{Europe}">Europe</option>
