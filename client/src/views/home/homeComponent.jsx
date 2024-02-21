@@ -123,8 +123,6 @@ function HomeComponent() {
       prevHandler={prevHandler} 
       nextHandler={nextHandler}
       pagina={page}/>
-      
-      
     </div>
   )
 }
