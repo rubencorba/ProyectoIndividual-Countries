@@ -89,11 +89,9 @@ export const filterCards=(continente)=>{
     return {type:FILTER, payload:continente}
 }
 
-
 export const orderCards=(orden)=>{
     return {type:ORDER, payload:orden}
 }
-
 
 export const filterByActivity=(actividad)=>{
     return {type:FILTER_ACT, payload:actividad}
